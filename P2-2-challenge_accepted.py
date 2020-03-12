@@ -49,7 +49,7 @@ def warp(h_matrix, contour, source, copy):
         source[y1, x1] = copy[temp_y, temp_x]
     return source
 
-vid = cv.VideoCapture("undistorted.avi")
+vid = cv.VideoCapture("challenge_video.mp4")
 frame_width = int(vid.get(3))
 frame_height = int(vid.get(4))
 # out = cv.VideoWriter('challenge_accepted_video.avi', cv.VideoWriter_fourcc('M','J','P','G'), 30, (frame_width, frame_height))
@@ -57,6 +57,9 @@ frame_height = int(vid.get(4))
 while(vid.isOpened()):
     _, frame = vid.read()
     if frame is not None:
+      frame_copy = np.copy(frame)
+      frame=cv.undistort(frame,K,D,None,K)
+
       font = cv.FONT_HERSHEY_SIMPLEX
       kernel = np.ones((5,5),np.uint8)
       kernel1 = np.ones((5,5),np.uint8)
