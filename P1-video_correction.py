@@ -13,12 +13,13 @@ import matplotlib.pyplot as plt
 vid = cv2.VideoCapture('Night Drive - 2689.mp4')
 frame_width = int(vid.get(3))
 frame_height = int(vid.get(4))
-
+out = cv2.VideoWriter('video_enhanced.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 30, (frame_width, frame_height))
 def main():
     adjusted = None
     while(vid.isOpened()):
         ret, frame = vid.read()
         if frame is not None:
+
             ref = np.copy(frame)
             # frame = cv2.resize(frame, (0, 0), None, .50, .50)
             lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
@@ -39,14 +40,18 @@ def main():
             sharpen_kernel = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])
             sharpen = cv2.filter2D(median, -1, sharpen_kernel)
             image_new = cv2.add(sharpen,np.array([50.0]))
-            np_horizontal_concat = np.concatenate((frame, image_new), axis = 1)
+            # np_horizontal_concat = np.concatenate((frame, image_new), axis = 1)
+            out.write(image_new)
             cv2.imshow("Final", image_new)
             # cv2.imshow("Comparison", np_horizontal_concat)
 
+        else:
+            break
         key = cv2.waitKey(1)
         if key == 27:
             break
 
+    out.release()
     vid.release()
     cv2.destroyAllWindows()
 
@@ -118,3 +123,14 @@ main()
 #     cv2.destroyAllWindows()
 
 # main()
+
+# https://stackoverflow.com/questions/19890054/how-to-sharpen-an-image-in-opencv
+# https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html
+# https://www.pyimagesearch.com/2015/10/05/opencv-gamma-correction/
+# https://medium.com/@rndayala/image-histograms-in-opencv-40ee5969a3b7
+# https://answers.opencv.org/question/193276/how-to-change-brightness-of-an-image-increase-or-decrease/
+# https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html
+# https://www.programcreek.com/python/example/89353/cv2.createCLAHE
+# http://amroamroamro.github.io/mexopencv/opencv/clahe_demo_gui.html
+# https://en.wikipedia.org/wiki/Kernel_(image_processing)
+# https://answers.opencv.org/question/175912/how-to-display-multiple-images-in-one-window/
