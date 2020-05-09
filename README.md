@@ -1,13 +1,13 @@
-### ENPM673 Project 2 -
-Video Enhancement | Lane Detection
+# Video Enhancement | Lane Detection
 
 ## Authors
-Prasheel Renkuntla- 116925570
-Raj Prakash Shinde- 116852104
-Shubham Sonawane- 116808996
+* **Shubham Sonawane**
+* **Prasheel Renkuntla**
+* **Raj Prakash Shinde**
+
  
 ## Description
-The project demonstrates Video enhancing and Lane detection for self driving cars
+Using the concept of hough lines and histogram for lanes, lane detection has been carried out on 2 different datasets.
 
 ## Dependencies
 * Ubuntu 16
@@ -32,7 +32,7 @@ To run the lane detection on challenge video, 2(b) KITTI Dataset -
 ```
 python3.7 P2-2-challenge_accepted.py
 ```
- 
+## Results
 ## Reference
 * https://stackoverflow.com/questions/19890054/how-to-sharpen-an-image-in-opencv
 * https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html
