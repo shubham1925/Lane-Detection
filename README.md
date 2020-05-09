@@ -1,4 +1,4 @@
-# Video Enhancement | Lane Detection
+# Lane Detection for Self Driving Cars
 
 ## Authors
 * **Shubham Sonawane**
@@ -33,6 +33,9 @@ To run the lane detection on challenge video, 2(b) KITTI Dataset -
 python3.7 P2-2-challenge_accepted.py
 ```
 ## Results
+![Image description](https://github.com/shubham1925/Lane-Detection/blob/master/dataset1.png)
+
+![Image description](https://github.com/shubham1925/Lane-Detection/blob/master/dataset2.png)
 ## Reference
 * https://stackoverflow.com/questions/19890054/how-to-sharpen-an-image-in-opencv
 * https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html
